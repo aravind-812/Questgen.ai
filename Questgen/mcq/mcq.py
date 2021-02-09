@@ -216,7 +216,7 @@ def get_keywords(nlp,text,max_keywords,s2v,fdist,normalized_levenshtein,no_of_se
 
 def generate_questions_mcq(keyword_sent_mapping,device,tokenizer,model,sense2vec,normalized_levenshtein):
     batch_text = []
-    print("keyword_sent_mapping "+keyword_sent_mapping)
+    #print("keyword_sent_mapping "+keyword_sent_mapping)
     answers = keyword_sent_mapping.keys()
     print("answers "+answers)
     for answer in answers:
