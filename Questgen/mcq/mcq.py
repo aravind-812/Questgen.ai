@@ -216,13 +216,17 @@ def get_keywords(nlp,text,max_keywords,s2v,fdist,normalized_levenshtein,no_of_se
 
 def generate_questions_mcq(keyword_sent_mapping,device,tokenizer,model,sense2vec,normalized_levenshtein):
     batch_text = []
+    print("keyword_sent_mapping "+keyword_sent_mapping)
     answers = keyword_sent_mapping.keys()
+    print("answers "+answers)
     for answer in answers:
         txt = keyword_sent_mapping[answer]
+        print("txt"+ txt)
         context = "context: " + txt
         text = context + " " + "answer: " + answer + " </s>"
+        print("text "+text)
         batch_text.append(text)
-
+        print("batch_text "+batch_text)
     encoding = tokenizer.batch_encode_plus(batch_text, pad_to_max_length=True, return_tensors="pt")
 
 
