@@ -71,16 +71,16 @@ class QGen:
         joiner = " "
         modified_text = joiner.join(sentences)
 
-
+        print(modified_text)
         keywords = get_keywords(self.nlp,modified_text,inp['max_questions'],self.s2v,self.fdist,self.normalized_levenshtein,len(sentences) )
-
+        print(keywords)
 
         keyword_sentence_mapping = get_sentences_for_keyword(keywords, sentences)
-
+        print(keyword_sentence_mapping)
         for k in keyword_sentence_mapping.keys():
             text_snippet = " ".join(keyword_sentence_mapping[k][:3])
             keyword_sentence_mapping[k] = text_snippet
-
+        
    
         final_output = {}
 
