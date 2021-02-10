@@ -192,7 +192,7 @@ def get_phrases(doc):
 def get_keywords(nlp,text,max_keywords,s2v,fdist,normalized_levenshtein,no_of_sentences):
     doc = nlp(text)
     max_keywords = int(max_keywords)
-    
+    print(doc+' Babai ide docs')
     keywords = get_nouns_multipartite(text)
     print(keywords)
     keywords = sorted(keywords, key=lambda x: fdist[x])
