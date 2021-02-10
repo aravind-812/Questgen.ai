@@ -192,11 +192,13 @@ def get_phrases(doc):
 def get_keywords(nlp,text,max_keywords,s2v,fdist,normalized_levenshtein,no_of_sentences):
     doc = nlp(text)
     max_keywords = int(max_keywords)
-
+    
     keywords = get_nouns_multipartite(text)
+    print(keywords)
     keywords = sorted(keywords, key=lambda x: fdist[x])
+    print(keywords)
     keywords = filter_phrases(keywords, max_keywords,normalized_levenshtein )
-
+    print(keywords)
     phrase_keys = get_phrases(doc)
     filtered_phrases = filter_phrases(phrase_keys, max_keywords,normalized_levenshtein )
 
@@ -218,15 +220,15 @@ def generate_questions_mcq(keyword_sent_mapping,device,tokenizer,model,sense2vec
     batch_text = []
     #print("keyword_sent_mapping "+keyword_sent_mapping)
     answers = keyword_sent_mapping.keys()
-    print("answers "+answers)
+    #print("answers "+answers)
     for answer in answers:
         txt = keyword_sent_mapping[answer]
-        print("txt"+ txt)
+        #print("txt"+ txt)
         context = "context: " + txt
         text = context + " " + "answer: " + answer + " </s>"
-        print("text "+text)
+        #print("text "+text)
         batch_text.append(text)
-        print("batch_text "+batch_text)
+        #print("batch_text "+batch_text)
     encoding = tokenizer.batch_encode_plus(batch_text, pad_to_max_length=True, return_tensors="pt")
 
 
